@@ -18,7 +18,8 @@ Vagrant.configure('2') do |config|
    os.image = ENV['OS_IMAGE']
  end
  config.vm.define 'linux-server-1' do |s|
-     s.vm.provider :openstack do |os, override|
+     s.vm.provision "shell", path: "./install-jenkins.sh"
+     s.vm.provider :openstack do |os, override|   
        os.server_name = 'must.be.changed'
        os.flavor = ENV['OS_FLAVOR']
        override.vm.synced_folder '.', '/vagrant', disabled: true
