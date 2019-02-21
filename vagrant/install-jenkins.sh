@@ -1,12 +1,9 @@
-# Installing java 8
-sudo apt-get update
-sudo apt-get install openjdk-8-jdk -y
-java -version
+# Pulling the container of jenkins
+docker pull registry.jala.info/devops/jenkins/jenkins:2.150.3-alpine
 
-# Installing repositories of jenkins
-wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
-sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-sudo apt-get update
+# Creation of the parent dir for the jenkins data
+mkdir -p docker/jenkins_home
+chmod 777 docker/jenkins_home
 
-# Intalling the specfied version of jenkins
-sudo apt-get install jenkins=2.150.3 -y
+# Command for run the container of jenkins:2.150.3-alpine
+docker run -d -p 8080:8080 -p 50000:50000 -v /home/ubuntu/docker/jenkins_home:/var/jenkins_home registry.jala.info/devops/jenkins/jenkins:2.150.3-alpine
