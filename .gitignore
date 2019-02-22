@@ -30,3 +30,7 @@ build
 
 # IDE
 .idea
+
+# Key files
+*.pem
+
