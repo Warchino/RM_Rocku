@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-				sh './gradle-java-at08/gradlew clean build -p gradle-java-at08'
+		sh './gradle-java-at08/gradlew clean build -p gradle-java-at08'
             }
         }
         stage('Test') {
